@@ -1,0 +1,85 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.geometry.Insets?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+
+<BorderPane xmlns:fx="http://javafx.com/fxml" fx:controller="com.example.dormitory.RoomController">
+
+    <top>
+        <VBox spacing="10">
+            <HBox spacing="10" alignment="CENTER_LEFT" style="-fx-padding: 15; -fx-background-color: #34495e;">
+                <Label text="Room Management" style="-fx-text-fill: white; -fx-font-size: 18px; -fx-font-weight: bold;"/>
+            </HBox>
+
+            <!-- Statistics Summary -->
+            <HBox spacing="20" style="-fx-padding: 15; -fx-background-color: #ecf0f1;">
+                <VBox alignment="CENTER" spacing="5" style="-fx-background-color: white; -fx-padding: 10; -fx-border-radius: 5; -fx-background-radius: 5; -fx-min-width: 120;">
+                    <Label text="Total Rooms" style="-fx-font-size: 12px; -fx-text-fill: #7f8c8d;"/>
+                    <Label fx:id="totalRoomsLabel" text="0" style="-fx-font-size: 24px; -fx-font-weight: bold; -fx-text-fill: #2c3e50;"/>
+                </VBox>
+
+                <VBox alignment="CENTER" spacing="5" style="-fx-background-color: #27ae60; -fx-padding: 10; -fx-border-radius: 5; -fx-background-radius: 5; -fx-min-width: 120;">
+                    <Label text="Occupied" style="-fx-font-size: 12px; -fx-text-fill: white;"/>
+                    <Label fx:id="occupiedLabel" text="0" style="-fx-font-size: 24px; -fx-font-weight: bold; -fx-text-fill: white;"/>
+                </VBox>
+
+                <VBox alignment="CENTER" spacing="5" style="-fx-background-color: #3498db; -fx-padding: 10; -fx-border-radius: 5; -fx-background-radius: 5; -fx-min-width: 120;">
+                    <Label text="Vacant" style="-fx-font-size: 12px; -fx-text-fill: white;"/>
+                    <Label fx:id="vacantLabel" text="0" style="-fx-font-size: 24px; -fx-font-weight: bold; -fx-text-fill: white;"/>
+                </VBox>
+
+                <VBox alignment="CENTER" spacing="5" style="-fx-background-color: #f39c12; -fx-padding: 10; -fx-border-radius: 5; -fx-background-radius: 5; -fx-min-width: 120;">
+                    <Label text="Maintenance" style="-fx-font-size: 12px; -fx-text-fill: white;"/>
+                    <Label fx:id="maintenanceLabel" text="0" style="-fx-font-size: 24px; -fx-font-weight: bold; -fx-text-fill: white;"/>
+                </VBox>
+            </HBox>
+
+            <!-- Search and Filter Bar -->
+            <HBox spacing="10" alignment="CENTER_LEFT" style="-fx-padding: 10;">
+                <Label text="Search:" style="-fx-font-weight: bold;"/>
+                <TextField fx:id="searchField" promptText="Search by room number, status, or tenant name" HBox.hgrow="ALWAYS" prefWidth="300"/>
+                <Separator orientation="VERTICAL"/>
+                <Button text="All" onAction="#handleShowAllRooms" style="-fx-background-color: #34495e; -fx-text-fill: white;"/>
+                <Button text="Vacant" onAction="#handleVacantRooms" style="-fx-background-color: #3498db; -fx-text-fill: white;"/>
+                <Button text="Occupied" onAction="#handleOccupiedRooms" style="-fx-background-color: #27ae60; -fx-text-fill: white;"/>
+                <Button text="Maintenance" onAction="#handleMaintenanceRooms" style="-fx-background-color: #f39c12; -fx-text-fill: white;"/>
+                <Button text="Rent Due" onAction="#handleRentDueRooms" style="-fx-background-color: #e74c3c; -fx-text-fill: white;"/>
+            </HBox>
+
+            <!-- Action Buttons -->
+            <HBox spacing="10" style="-fx-padding: 10;">
+                <Button text="Add Room" onAction="#handleAddRoom" style="-fx-background-color: #2ecc71; -fx-text-fill: white; -fx-font-weight: bold;"/>
+                <Button text="Edit Room" onAction="#handleEditRoom" style="-fx-background-color: #3498db; -fx-text-fill: white; -fx-font-weight: bold;"/>
+                <Button text="Delete Room" onAction="#handleDeleteRoom" style="-fx-background-color: #e74c3c; -fx-text-fill: white; -fx-font-weight: bold;"/>
+                <Separator orientation="VERTICAL"/>
+                <Button text="Mark Rent Due" onAction="#handleMarkRentDue" style="-fx-background-color: #e67e22; -fx-text-fill: white;"/>
+                <Button text="Clear Rent Due" onAction="#handleClearRentDue" style="-fx-background-color: #95a5a6; -fx-text-fill: white;"/>
+                <Button text="Refresh" onAction="#handleRefresh" style="-fx-background-color: #34495e; -fx-text-fill: white;"/>
+            </HBox>
+        </VBox>
+    </top>
+
+    <center>
+        <VBox spacing="15" style="-fx-padding: 20;">
+            <TableView fx:id="roomTable" prefHeight="450">
+                <columns>
+                    <TableColumn fx:id="roomIdColumn" text="Room ID" prefWidth="80"/>
+                    <TableColumn fx:id="roomNumberColumn" text="Room Number" prefWidth="100"/>
+                    <TableColumn fx:id="statusColumn" text="Status" prefWidth="100"/>
+                    <TableColumn fx:id="tenantNameColumn" text="Tenant Name" prefWidth="150"/>
+                    <TableColumn fx:id="rentColumn" text="Monthly Rent" prefWidth="120"/>
+                    <TableColumn fx:id="rentDueColumn" text="Rent Due" prefWidth="120"/>
+                </columns>
+            </TableView>
+
+            <VBox spacing="5" style="-fx-padding: 10; -fx-background-color: #e8f4f8; -fx-border-color: #bdc3c7; -fx-border-radius: 5;">
+                <Label text="📝 Instructions:" style="-fx-font-weight: bold; -fx-text-fill: #2c3e50;"/>
+                <Label text="• Select a room and click 'Edit Room' to change room number, status, or rent" style="-fx-font-size: 12px; -fx-text-fill: #2c3e50;"/>
+                <Label text="• Room number changes will automatically update tenant records" style="-fx-font-size: 12px; -fx-text-fill: #2c3e50;"/>
+                <Label text="• Occupied rooms cannot be deleted - remove tenant first" style="-fx-font-size: 12px; -fx-text-fill: #2c3e50;"/>
+                <Label text="• Use search to find specific rooms" style="-fx-font-size: 12px; -fx-text-fill: #2c3e50;"/>
+            </VBox>
+        </VBox>
+    </center>
+</BorderPane>

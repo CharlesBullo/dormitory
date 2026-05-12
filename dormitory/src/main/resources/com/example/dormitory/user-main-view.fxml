@@ -1,0 +1,40 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.layout.BorderPane?>
+<?import javafx.scene.layout.StackPane?>
+<?import javafx.scene.layout.VBox?>
+
+<?import javafx.scene.control.Label?>
+<BorderPane xmlns:fx="http://javafx.com/fxml"
+            fx:controller="com.example.dormitory.UserViewController">
+    <left>
+        <VBox spacing="15"
+              prefWidth="200"
+              style="-fx-background-color: #2C3E50; -fx-padding: 20;">
+
+            <Button text="Dashboard"
+                    prefWidth="160"
+                    onAction="#handleUserDashboard"/>
+
+            <Button text="Payment"
+                    prefWidth="160"
+                    onAction="#handlePayment"/>
+
+            <Button text="Transaction History"
+                    prefWidth="160"
+                    onAction="#handleTransactionHistory"/>
+
+            <Button text="Rent Notification"
+                    prefWidth="160"
+                    onAction="#handleRentNotification"/>
+
+        </VBox>
+    </left>
+
+    <center>
+        <StackPane fx:id="contentPane"
+                   style="-fx-background-color: #ECF0F1;"/>
+    </center>
+
+</BorderPane>

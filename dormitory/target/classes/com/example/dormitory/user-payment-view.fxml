@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+
+<VBox alignment="CENTER" prefHeight="223.0" prefWidth="278.0" spacing="15" xmlns:fx="http://javafx.com/fxml/1" xmlns="http://javafx.com/javafx/17.0.12" fx:controller="com.example.dormitory.UserPaymentController">
+
+    <Label style="-fx-font-size: 24px; -fx-font-weight: bold;" text="PAYMENT PAGE" />
+
+    <Label fx:id="nameLabel" />
+
+    <Label fx:id="dueDateLabel" />
+
+    <ComboBox fx:id="paymentOptionBox" promptText="Select Payment Option" />
+
+    <Button onAction="#handlePayment" text="Pay Rent" />
+
+</VBox>
