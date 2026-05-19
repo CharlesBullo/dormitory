@@ -1,0 +1,68 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.geometry.Insets?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+
+<VBox xmlns:fx="http://javafx.com/fxml"
+      fx:controller="com.example.dormitory.RegisterTenantController"
+      spacing="15" style="-fx-padding: 20; -fx-background-color: #ecf0f1;">
+
+    <Label text="Register New Tenant" style="-fx-font-size: 24px; -fx-font-weight: bold; -fx-text-fill: #2c3e50;"/>
+
+    <Separator/>
+
+    <GridPane hgap="15" vgap="15">
+        <padding>
+            <Insets top="10" bottom="10"/>
+        </padding>
+
+        <!-- Row 0 -->
+        <Label text="Tenant Name:" GridPane.columnIndex="0" GridPane.rowIndex="0" style="-fx-font-weight: bold;"/>
+        <TextField fx:id="nameField" promptText="Enter full name" GridPane.columnIndex="1" GridPane.rowIndex="0" prefWidth="300"/>
+
+        <!-- Row 1 -->
+        <Label text="Contact Number:" GridPane.columnIndex="0" GridPane.rowIndex="1" style="-fx-font-weight: bold;"/>
+        <TextField fx:id="contactField" promptText="Enter contact number" GridPane.columnIndex="1" GridPane.rowIndex="1"/>
+
+        <!-- Row 2 -->
+        <Label text="Email Address:" GridPane.columnIndex="0" GridPane.rowIndex="2" style="-fx-font-weight: bold;"/>
+        <TextField fx:id="emailField" promptText="Enter email address" GridPane.columnIndex="1" GridPane.rowIndex="2"/>
+
+        <!-- Row 3 -->
+        <Label text="Select Room:" GridPane.columnIndex="0" GridPane.rowIndex="3" style="-fx-font-weight: bold;"/>
+        <ComboBox fx:id="roomComboBox" promptText="Choose available room" GridPane.columnIndex="1" GridPane.rowIndex="3" prefWidth="300"/>
+
+        <!-- Row 4 -->
+        <Label text="Room Details:" GridPane.columnIndex="0" GridPane.rowIndex="4" style="-fx-font-weight: bold;"/>
+        <Label fx:id="roomRentLabel" text="Monthly Rent: --" GridPane.columnIndex="1" GridPane.rowIndex="4" style="-fx-text-fill: #27ae60;"/>
+
+        <!-- Row 5 -->
+        <Label text="Move-in Date:" GridPane.columnIndex="0" GridPane.rowIndex="5" style="-fx-font-weight: bold;"/>
+        <DatePicker fx:id="moveInDatePicker" GridPane.columnIndex="1" GridPane.rowIndex="5" prefWidth="300"/>
+
+        <!-- Row 6 -->
+        <Label text="First Payment Due:" GridPane.columnIndex="0" GridPane.rowIndex="6" style="-fx-font-weight: bold;"/>
+        <Label fx:id="dueDateLabel" text="Due date will appear here" GridPane.columnIndex="1" GridPane.rowIndex="6" style="-fx-text-fill: #e74c3c; -fx-font-weight: bold;"/>
+
+        <columnConstraints>
+            <ColumnConstraints minWidth="120"/>
+            <ColumnConstraints minWidth="300"/>
+        </columnConstraints>
+    </GridPane>
+
+    <Separator/>
+
+    <HBox spacing="15" alignment="CENTER_RIGHT">
+        <Button text="View All Rooms" onAction="#handleViewRooms" style="-fx-background-color: #3498db; -fx-text-fill: white;"/>
+        <Button text="Clear Form" onAction="#handleCancel" style="-fx-background-color: #95a5a6; -fx-text-fill: white;"/>
+        <Button text="Register Tenant" onAction="#handleRegister" style="-fx-background-color: #27ae60; -fx-text-fill: white; -fx-font-weight: bold;"/>
+    </HBox>
+
+    <VBox spacing="5" style="-fx-padding: 10; -fx-background-color: #fff3cd; -fx-border-color: #ffeaa7; -fx-border-radius: 5;">
+        <Label text="📌 Important Notes:" style="-fx-font-weight: bold; -fx-text-fill: #856404;"/>
+        <Label text="• Only vacant rooms are shown in the dropdown" style="-fx-font-size: 12px; -fx-text-fill: #856404;"/>
+        <Label text="• Rent due date is automatically set to one month after move-in" style="-fx-font-size: 12px; -fx-text-fill: #856404;"/>
+        <Label text="• Tenant will receive payment reminder on due date" style="-fx-font-size: 12px; -fx-text-fill: #856404;"/>
+    </VBox>
+</VBox>

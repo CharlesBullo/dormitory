@@ -1,0 +1,71 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.geometry.Insets?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+<?import javafx.scene.text.Font?>
+
+<VBox xmlns:fx="http://javafx.com/fxml"
+      fx:controller="com.example.dormitory.LoginController"
+      spacing="20" alignment="CENTER"
+      style="-fx-background-color: linear-gradient(to bottom, #2c3e50, #3498db);"
+      prefWidth="450" prefHeight="500">
+
+    <!-- Logo / Title Section -->
+    <VBox alignment="CENTER" spacing="10">
+        <Label text="🏠" style="-fx-font-size: 64px;"/>
+        <Label text="Dormitory Management" style="-fx-text-fill: white; -fx-font-size: 28px; -fx-font-weight: bold;"/>
+        <Label text="System" style="-fx-text-fill: white; -fx-font-size: 24px; -fx-font-weight: bold;"/>
+        <Label text="Login to your account" style="-fx-text-fill: #ecf0f1; -fx-font-size: 14px;"/>
+    </VBox>
+
+    <!-- Login Form Card -->
+    <VBox spacing="15" style="-fx-background-color: white; -fx-padding: 30; -fx-background-radius: 15; -fx-effect: dropshadow(gaussian, rgba(0,0,0,0.2), 20, 0, 0, 10);"
+          prefWidth="350">
+
+        <Label text="🔐 LOGIN" style="-fx-font-size: 18px; -fx-font-weight: bold; -fx-text-fill: #2c3e50;"/>
+
+        <Separator/>
+
+        <!-- Username Field -->
+        <VBox spacing="5">
+            <Label text="Username" style="-fx-font-weight: bold; -fx-text-fill: #2c3e50;"/>
+            <TextField fx:id="usernameField" promptText="Enter your username"
+                       style="-fx-padding: 10; -fx-background-radius: 5; -fx-border-radius: 5; -fx-border-color: #bdc3c7;"/>
+        </VBox>
+
+        <!-- Password Field -->
+        <VBox spacing="5">
+            <Label text="Password" style="-fx-font-weight: bold; -fx-text-fill: #2c3e50;"/>
+            <PasswordField fx:id="passwordField" promptText="Enter your password"
+                           style="-fx-padding: 10; -fx-background-radius: 5; -fx-border-radius: 5; -fx-border-color: #bdc3c7;"/>
+            <TextField fx:id="visiblePasswordField" promptText="Enter your password"
+                       style="-fx-padding: 10; -fx-background-radius: 5; -fx-border-radius: 5; -fx-border-color: #bdc3c7;"
+                       visible="false" managed="false"/>
+        </VBox>
+
+        <!-- Show Password Checkbox -->
+        <HBox alignment="CENTER_LEFT">
+            <CheckBox fx:id="showPasswordCheck" text="Show Password" style="-fx-text-fill: #2c3e50;"/>
+        </HBox>
+
+        <!-- Login Button -->
+        <Button text="LOGIN" onAction="#handleLogin"
+                style="-fx-background-color: #27ae60; -fx-text-fill: white; -fx-font-weight: bold; -fx-font-size: 14px; -fx-padding: 12; -fx-background-radius: 5;"
+                prefWidth="290"/>
+
+        <Separator/>
+
+        <!-- Demo Credentials -->
+        <VBox spacing="5" style="-fx-background-color: #e8f4f8; -fx-padding: 10; -fx-background-radius: 5;">
+            <Label text="📌 Demo Credentials:" style="-fx-font-weight: bold; -fx-text-fill: #2c3e50; -fx-font-size: 12px;"/>
+            <Label text="Admin: username='admin', password='admin123'" style="-fx-font-size: 11px; -fx-text-fill: #7f8c8d;"/>
+            <Label text="Tenant: username='[generated]', password='123456'" style="-fx-font-size: 11px; -fx-text-fill: #7f8c8d;"/>
+        </VBox>
+    </VBox>
+
+    <!-- Footer -->
+    <Label text="© 2024 Dormitory Management System | All Rights Reserved"
+           style="-fx-text-fill: #ecf0f1; -fx-font-size: 11px;"/>
+
+</VBox>

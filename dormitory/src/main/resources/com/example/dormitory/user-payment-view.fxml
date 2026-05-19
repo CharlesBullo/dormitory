@@ -1,0 +1,79 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.geometry.Insets?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+
+<VBox xmlns:fx="http://javafx.com/fxml"
+      fx:controller="com.example.dormitory.UserPaymentController"
+      spacing="20" style="-fx-padding: 25; -fx-background-color: #ecf0f1;"
+      prefWidth="800" prefHeight="600">
+
+    <!-- Header -->
+    <HBox alignment="CENTER_LEFT" style="-fx-background-color: linear-gradient(to right, #2c3e50, #3498db); -fx-background-radius: 10;">
+        <VBox spacing="5" style="-fx-padding: 20;">
+            <Label text="💳 Make Payment" style="-fx-text-fill: white; -fx-font-size: 24px; -fx-font-weight: bold;"/>
+            <Label text="Pay your monthly rent securely" style="-fx-text-fill: #ecf0f1; -fx-font-size: 14px;"/>
+        </VBox>
+        <Region HBox.hgrow="ALWAYS"/>
+    </HBox>
+
+    <!-- Tenant Information Card -->
+    <TitledPane text="👤 Tenant Information" expanded="true" style="-fx-background-color: white; -fx-background-radius: 10;">
+        <GridPane hgap="15" vgap="15" style="-fx-padding: 15;">
+            <Label text="Tenant Name:" GridPane.columnIndex="0" GridPane.rowIndex="0" style="-fx-font-weight: bold; -fx-text-fill: #2c3e50;"/>
+            <Label fx:id="nameLabel" text="--" GridPane.columnIndex="1" GridPane.rowIndex="0" style="-fx-text-fill: #2c3e50;"/>
+
+            <Label text="Room Number:" GridPane.columnIndex="0" GridPane.rowIndex="1" style="-fx-font-weight: bold; -fx-text-fill: #2c3e50;"/>
+            <Label fx:id="roomNumberLabel" text="--" GridPane.columnIndex="1" GridPane.rowIndex="1" style="-fx-text-fill: #3498db; -fx-font-weight: bold;"/>
+
+            <Label text="Monthly Rent:" GridPane.columnIndex="0" GridPane.rowIndex="2" style="-fx-font-weight: bold; -fx-text-fill: #2c3e50;"/>
+            <Label fx:id="rentAmountLabel" text="--" GridPane.columnIndex="1" GridPane.rowIndex="2" style="-fx-text-fill: #27ae60; -fx-font-weight: bold;"/>
+
+            <Label text="Due Date:" GridPane.columnIndex="0" GridPane.rowIndex="3" style="-fx-font-weight: bold; -fx-text-fill: #2c3e50;"/>
+            <Label fx:id="dueDateLabel" text="--" GridPane.columnIndex="1" GridPane.rowIndex="3"/>
+
+            <columnConstraints>
+                <ColumnConstraints minWidth="120"/>
+                <ColumnConstraints minWidth="200"/>
+            </columnConstraints>
+        </GridPane>
+    </TitledPane>
+
+    <!-- Payment Options Card -->
+    <TitledPane text="💳 Payment Options" expanded="true" style="-fx-background-color: white; -fx-background-radius: 10;">
+        <VBox spacing="15" style="-fx-padding: 15;">
+            <Label text="Select Payment Duration:" style="-fx-font-weight: bold; -fx-text-fill: #2c3e50;"/>
+
+            <ComboBox fx:id="paymentOptionBox" promptText="Select Payment Option" prefWidth="250"/>
+
+            <Separator/>
+
+            <HBox alignment="CENTER_RIGHT" spacing="10">
+                <Label text="Total Amount:" style="-fx-font-size: 16px; -fx-font-weight: bold; -fx-text-fill: #2c3e50;"/>
+                <Label fx:id="totalPaymentLabel" text="₱0.00" style="-fx-font-size: 20px; -fx-font-weight: bold; -fx-text-fill: #e74c3c;"/>
+            </HBox>
+
+            <Separator/>
+
+            <HBox spacing="15" alignment="CENTER">
+                <Button text="← Back" onAction="#handleBack"
+                        style="-fx-background-color: #95a5a6; -fx-text-fill: white; -fx-font-weight: bold; -fx-padding: 10 20;"/>
+                <Button text="✅ Confirm Payment" onAction="#handlePayment"
+                        style="-fx-background-color: #27ae60; -fx-text-fill: white; -fx-font-weight: bold; -fx-padding: 10 20;"/>
+                <Button text="📜 Payment History" onAction="#handleViewPaymentHistory"
+                        style="-fx-background-color: #3498db; -fx-text-fill: white; -fx-font-weight: bold; -fx-padding: 10 20;"/>
+            </HBox>
+        </VBox>
+    </TitledPane>
+
+    <!-- Payment Instructions -->
+    <VBox spacing="5" style="-fx-background-color: #e8f4f8; -fx-padding: 15; -fx-border-color: #bdc3c7; -fx-border-radius: 10; -fx-background-radius: 10;">
+        <Label text="📌 Payment Instructions:" style="-fx-font-weight: bold; -fx-text-fill: #2c3e50; -fx-font-size: 14px;"/>
+        <Label text="• Select the number of months you want to pay" style="-fx-font-size: 12px; -fx-text-fill: #2c3e50;"/>
+        <Label text="• The total amount will be calculated automatically" style="-fx-font-size: 12px; -fx-text-fill: #2c3e50;"/>
+        <Label text="• Click 'Confirm Payment' to complete your transaction" style="-fx-font-size: 12px; -fx-text-fill: #2c3e50;"/>
+        <Label text="• A receipt will be generated after successful payment" style="-fx-font-size: 12px; -fx-text-fill: #2c3e50;"/>
+    </VBox>
+
+</VBox>

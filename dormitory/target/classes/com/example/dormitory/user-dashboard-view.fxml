@@ -1,0 +1,95 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.geometry.Insets?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+
+<VBox xmlns:fx="http://javafx.com/fxml"
+      fx:controller="com.example.dormitory.UserDashboardController"
+      spacing="20" style="-fx-padding: 25; -fx-background-color: #ecf0f1;"
+      prefWidth="800" prefHeight="600">
+
+    <!-- Welcome Banner -->
+    <HBox alignment="CENTER_LEFT" style="-fx-background-color: linear-gradient(to right, #2c3e50, #3498db); -fx-background-radius: 10;">
+        <VBox spacing="5" style="-fx-padding: 20;">
+            <Label fx:id="welcomeLabel" text="Welcome!" style="-fx-text-fill: white; -fx-font-size: 24px; -fx-font-weight: bold;"/>
+            <Label text="Here's your dashboard overview" style="-fx-text-fill: #ecf0f1; -fx-font-size: 14px;"/>
+        </VBox>
+        <Region HBox.hgrow="ALWAYS"/>
+    </HBox>
+
+    <!-- Stats Cards -->
+    <HBox spacing="20" alignment="CENTER">
+        <!-- Monthly Rent Card -->
+        <VBox alignment="CENTER" spacing="10" style="-fx-background-color: white; -fx-padding: 20; -fx-background-radius: 10; -fx-effect: dropshadow(gaussian, rgba(0,0,0,0.1), 10, 0, 0, 5);" HBox.hgrow="ALWAYS">
+            <Label text="💰" style="-fx-font-size: 32px;"/>
+            <Label text="Monthly Rent" style="-fx-font-size: 12px; -fx-text-fill: #7f8c8d;"/>
+            <Label fx:id="rentAmountLabel" text="₱0.00" style="-fx-font-size: 20px; -fx-font-weight: bold; -fx-text-fill: #27ae60;"/>
+        </VBox>
+
+        <!-- Room Number Card -->
+        <VBox alignment="CENTER" spacing="10" style="-fx-background-color: white; -fx-padding: 20; -fx-background-radius: 10; -fx-effect: dropshadow(gaussian, rgba(0,0,0,0.1), 10, 0, 0, 5);" HBox.hgrow="ALWAYS">
+            <Label text="🏠" style="-fx-font-size: 32px;"/>
+            <Label text="Room Number" style="-fx-font-size: 12px; -fx-text-fill: #7f8c8d;"/>
+            <Label fx:id="roomNumberLabel" text="--" style="-fx-font-size: 20px; -fx-font-weight: bold; -fx-text-fill: #3498db;"/>
+        </VBox>
+
+        <!-- Payment Status Card -->
+        <VBox alignment="CENTER" spacing="10" style="-fx-background-color: white; -fx-padding: 20; -fx-background-radius: 10; -fx-effect: dropshadow(gaussian, rgba(0,0,0,0.1), 10, 0, 0, 5);" HBox.hgrow="ALWAYS">
+            <Label text="✓" style="-fx-font-size: 32px;"/>
+            <Label text="Payment Status" style="-fx-font-size: 12px; -fx-text-fill: #7f8c8d;"/>
+            <Label fx:id="paymentStatusLabel" text="--" style="-fx-font-size: 16px; -fx-font-weight: bold;"/>
+        </VBox>
+    </HBox>
+
+    <!-- Room Information Section -->
+    <TitledPane text="📋 Room Information" expanded="true" style="-fx-background-color: white; -fx-background-radius: 10;">
+        <GridPane hgap="15" vgap="15" style="-fx-padding: 15;">
+            <Label text="Room Number:" GridPane.columnIndex="0" GridPane.rowIndex="0" style="-fx-font-weight: bold; -fx-text-fill: #2c3e50;"/>
+            <Label fx:id="roomNumberLabel" text="--" GridPane.columnIndex="1" GridPane.rowIndex="0" style="-fx-text-fill: #3498db; -fx-font-weight: bold;"/>
+
+            <Label text="Monthly Rent:" GridPane.columnIndex="0" GridPane.rowIndex="1" style="-fx-font-weight: bold; -fx-text-fill: #2c3e50;"/>
+            <Label fx:id="rentAmountLabel" text="--" GridPane.columnIndex="1" GridPane.rowIndex="1" style="-fx-text-fill: #27ae60; -fx-font-weight: bold;"/>
+
+            <Label text="Due Date:" GridPane.columnIndex="0" GridPane.rowIndex="2" style="-fx-font-weight: bold; -fx-text-fill: #2c3e50;"/>
+            <Label fx:id="dueDateLabel" text="--" GridPane.columnIndex="1" GridPane.rowIndex="2"/>
+
+            <Label text="Payment Status:" GridPane.columnIndex="0" GridPane.rowIndex="3" style="-fx-font-weight: bold; -fx-text-fill: #2c3e50;"/>
+            <Label fx:id="paymentStatusLabel" text="--" GridPane.columnIndex="1" GridPane.rowIndex="3"/>
+
+            <columnConstraints>
+                <ColumnConstraints minWidth="120"/>
+                <ColumnConstraints minWidth="200"/>
+            </columnConstraints>
+        </GridPane>
+    </TitledPane>
+
+    <!-- Payment Summary Section -->
+    <TitledPane text="💰 Payment Summary" expanded="true" style="-fx-background-color: white; -fx-background-radius: 10;">
+        <GridPane hgap="15" vgap="15" style="-fx-padding: 15;">
+            <Label text="Total Debt:" GridPane.columnIndex="0" GridPane.rowIndex="0" style="-fx-font-weight: bold; -fx-text-fill: #2c3e50;"/>
+            <Label fx:id="debtAmountLabel" text="₱0.00" GridPane.columnIndex="1" GridPane.rowIndex="0" style="-fx-text-fill: #e74c3c; -fx-font-weight: bold;"/>
+
+            <Label text="Missed Months:" GridPane.columnIndex="0" GridPane.rowIndex="1" style="-fx-font-weight: bold; -fx-text-fill: #2c3e50;"/>
+            <Label fx:id="missedMonthsLabel" text="0" GridPane.columnIndex="1" GridPane.rowIndex="1"/>
+
+            <Label text="Paid Streak:" GridPane.columnIndex="0" GridPane.rowIndex="2" style="-fx-font-weight: bold; -fx-text-fill: #2c3e50;"/>
+            <Label fx:id="paidStreakLabel" text="0 months" GridPane.columnIndex="1" GridPane.rowIndex="2" style="-fx-text-fill: #27ae60;"/>
+
+            <Label text="Next Due Date:" GridPane.columnIndex="0" GridPane.rowIndex="3" style="-fx-font-weight: bold; -fx-text-fill: #2c3e50;"/>
+            <Label fx:id="nextDueDateLabel" text="--" GridPane.columnIndex="1" GridPane.rowIndex="3" style="-fx-text-fill: #e67e22; -fx-font-weight: bold;"/>
+
+            <columnConstraints>
+                <ColumnConstraints minWidth="120"/>
+                <ColumnConstraints minWidth="200"/>
+            </columnConstraints>
+        </GridPane>
+    </TitledPane>
+
+    <!-- Refresh Button Only -->
+    <HBox alignment="CENTER">
+        <Button text="🔄 Refresh Dashboard" onAction="#handleRefresh"
+                style="-fx-background-color: #3498db; -fx-text-fill: white; -fx-font-weight: bold; -fx-padding: 10 20; -fx-background-radius: 5;"/>
+    </HBox>
+
+</VBox>

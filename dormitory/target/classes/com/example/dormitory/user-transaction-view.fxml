@@ -1,0 +1,64 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.geometry.Insets?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+
+<VBox spacing="20" alignment="TOP_CENTER"
+      xmlns:fx="http://javafx.com/fxml"
+      fx:controller="com.example.dormitory.UserTransactionController"
+      style="-fx-padding: 20; -fx-background-color: #ecf0f1;">
+
+    <Label text="TRANSACTION HISTORY"
+           style="-fx-font-size: 28px; -fx-font-weight: bold; -fx-text-fill: #2c3e50;"/>
+
+    <Separator/>
+
+    <!-- Statistics Summary -->
+    <HBox spacing="20" style="-fx-padding: 10;">
+        <VBox alignment="CENTER" spacing="5" style="-fx-background-color: white; -fx-padding: 10; -fx-border-radius: 5; -fx-background-radius: 5; -fx-min-width: 150;">
+            <Label text="Total Payments" style="-fx-font-size: 12px; -fx-text-fill: #7f8c8d;"/>
+            <Label fx:id="totalPaymentsLabel" text="0" style="-fx-font-size: 24px; -fx-font-weight: bold; -fx-text-fill: #2c3e50;"/>
+        </VBox>
+
+        <VBox alignment="CENTER" spacing="5" style="-fx-background-color: #27ae60; -fx-padding: 10; -fx-border-radius: 5; -fx-background-radius: 5; -fx-min-width: 200;">
+            <Label text="Total Amount Paid" style="-fx-font-size: 12px; -fx-text-fill: white;"/>
+            <Label fx:id="totalAmountLabel" text="₱0.00" style="-fx-font-size: 24px; -fx-font-weight: bold; -fx-text-fill: white;"/>
+        </VBox>
+
+        <VBox alignment="CENTER" spacing="5" style="-fx-background-color: #3498db; -fx-padding: 10; -fx-border-radius: 5; -fx-background-radius: 5; -fx-min-width: 200;">
+            <Label text="Last Payment" style="-fx-font-size: 12px; -fx-text-fill: white;"/>
+            <Label fx:id="lastPaymentLabel" text="No payments" style="-fx-font-size: 14px; -fx-font-weight: bold; -fx-text-fill: white;"/>
+        </VBox>
+    </HBox>
+
+    <!-- Search Bar -->
+    <HBox spacing="10" alignment="CENTER_LEFT">
+        <Label text="Search:" style="-fx-font-weight: bold;"/>
+        <TextField fx:id="searchField" promptText="Search by reference number or date" HBox.hgrow="ALWAYS" prefWidth="300"/>
+        <Button text="Refresh" onAction="#handleRefresh" style="-fx-background-color: #3498db; -fx-text-fill: white;"/>
+        <Button text="Export" onAction="#handleExport" style="-fx-background-color: #27ae60; -fx-text-fill: white;"/>
+        <Button text="Print" onAction="#handlePrint" style="-fx-background-color: #95a5a6; -fx-text-fill: white;"/>
+    </HBox>
+
+    <!-- Transaction Table -->
+    <TableView fx:id="transactionTable" prefHeight="400" prefWidth="800">
+        <columns>
+            <TableColumn fx:id="dateColumn" text="Payment Date" prefWidth="120"/>
+            <TableColumn fx:id="referenceColumn" text="Reference Number" prefWidth="150"/>
+            <TableColumn fx:id="amountColumn" text="Amount" prefWidth="120"/>
+            <TableColumn fx:id="monthsPaidColumn" text="Months Paid" prefWidth="100"/>
+            <TableColumn fx:id="methodColumn" text="Payment Method" prefWidth="130"/>
+            <TableColumn fx:id="statusColumn" text="Status" prefWidth="100"/>
+        </columns>
+    </TableView>
+
+    <VBox spacing="5" style="-fx-padding: 10; -fx-background-color: #e8f4f8; -fx-border-color: #bdc3c7; -fx-border-radius: 5;">
+        <Label text="📋 Information:" style="-fx-font-weight: bold; -fx-text-fill: #2c3e50;"/>
+        <Label text="• Your complete payment history is shown above" style="-fx-font-size: 12px; -fx-text-fill: #2c3e50;"/>
+        <Label text="• Use the search bar to find specific transactions" style="-fx-font-size: 12px; -fx-text-fill: #2c3e50;"/>
+        <Label text="• Click 'Export' to save your payment history" style="-fx-font-size: 12px; -fx-text-fill: #2c3e50;"/>
+        <Label text="• Click 'Print' to print your payment history" style="-fx-font-size: 12px; -fx-text-fill: #2c3e50;"/>
+    </VBox>
+
+</VBox>
